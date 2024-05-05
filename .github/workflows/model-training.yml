@@ -32,9 +32,6 @@ jobs:
           path: ./data/models/baummethoden.pickle
 
 
-'''
-on:
-  pull_request:
-    types: [opened, synchronize]
-
-'''
+# on:
+#   pull_request:
+#     types: [opened, synchronize]

@@ -1,0 +1,40 @@
+name: model-training
+on: 
+  workflow_dispatch:
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4           # Checkout Repository
+      - uses: actions/setup-python@v5       # Setup Python and install requirements
+        with:
+          python-version: "3.9"
+      - run: pip install -r requirements.txt
+      - run: pytest                         # Run all tests
+
+  model-training:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+      - run: pip install -r requirements.txt
+      - run: python src/train.py            #  Train the model
+      - uses: actions/upload-artifact@v4    #  Upload trained model
+        with:
+          # Name of the artifact to upload.
+          # Optional. Default is 'artifact'
+          name: baummethoden.pickle
+          # A file, directory or wildcard pattern that describes what to upload
+          # Required.
+          path: ./data/models/baummethoden.pickle
+
+
+'''
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+'''

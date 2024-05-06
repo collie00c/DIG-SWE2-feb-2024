@@ -26,10 +26,10 @@ jobs:
         with:
           # Name of the artifact to upload.
           # Optional. Default is 'artifact'
-          name: baummethoden.pickle
+          name: baummethoden_lr.pickle
           # A file, directory or wildcard pattern that describes what to upload
           # Required.
-          path: ./data/models/baummethoden.pickle
+          path: ./data/models/baummethoden_lr.pickle
 
 
 # on:
